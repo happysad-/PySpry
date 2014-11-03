@@ -1,16 +1,25 @@
 #!/usr/bin/python
 
-from scripts import ASMScript
-from scripts import ASMLibs
-from scripts import Setup
+# ========= IMPORTS ========= #
+import scripts.ASMScript
+import scripts.ASMLibs
+import scripts.Setup
+import scripts.Utilities
 import os
+# ======= END IMPORTS ======= #
 
+# ========= GLOBAL VARS ========= #
 userInput = "";
+usrPlatform = "";
+# ======= END GLOBAL VARS ======= #
 
 def main():
+    global usrPlatform;
+    usrPlatform = scripts.Utilities.getUsrPlatform();
+    
     while userInput != 'q':
         print("PyMyOS - Operating System builder!");
-        print("Version: 0.1");
+        print("Version: 0.2");
 
         showMenu();
         getUserInput();
@@ -40,11 +49,11 @@ def getUserInput():
 
 def assembleBootloader():
     clearScreen();
-    ASMScript.assemble();
+    scripts.ASMScript.assemble();
 
 def assembleASMLibs():
     clearScreen();
-    ASMLibs.assemble();
+    scripts.ASMLibs.assemble();
 
 def compileKernel():
     pass;
@@ -53,14 +62,15 @@ def compileKernelLibs():
     pass;
 
 def createFloppyImg():
-    pass;
+    clearScreen();
+    scripts.Utilities.mkFloppyImg(usrPlatform);
 
 def copyBootToFloppy():
     pass;
 
 def setup():
     clearScreen();
-    Setup.createDirs();
+    scripts.Setup.createDirs();
 
 def displayHelp():
     pass;

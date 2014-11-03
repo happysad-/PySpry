@@ -27,6 +27,7 @@ def assemble():
     print();
     if counter == len(os.listdir(path=pathToBin)):
         print("Everything was assembled!");
+        print("However, please check the size of binaries to make sure...");
     else:
         print("Something went wrong... Not all files were assembled. Check your ASM files...");
     print();
